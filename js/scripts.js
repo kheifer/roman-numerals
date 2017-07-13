@@ -5,90 +5,90 @@ $(document).ready(function() {
 
 
     //separates single digits
-    for (var i = 1; i <= numArray[0]; i +=1) {
-       firsdig += "I";
+    function singles(number) {
+      input = "";
+    for (var i = 1; i <= number; i +=1) {
+       input += "I";
        if (i === 4) {
-         firsdig = "IV";
+         input = "IV";
        } else if (i === 5) {
-         firsdig = "V";
+         input = "V";
        } else if (i === 9) {
-         firsdig = "IX";
+         input = "IX";
        } else {}
+       };
+       return input;
      };
     //separates tens
-    for (var i = 1; i <= numArray[0]; i +=1) {
-       firsdig += "X";
+    function tens(number) {
+      input = "";
+    for (var i = 1; i <= number; i +=1) {
+       input += "X";
        if (i === 4) {
-         firsdig = "XC";
+         input = "XC";
        } else if (i === 5) {
-         firsdig = "L";
+         input = "L";
        } else if (i === 9) {
-         firsdig = "IX";
+         input = "IX";
        } else {}
+       };
+       return input;
      };
 
     //separates hundreds
-    var hundreds = function(number) {
-    for (var i = 1; i <= numArray[0]; i +=1) {
-       firsdig += "C";
+    function hundreds(number) {
+      input = "";
+    for (var i = 1; i <= number; i +=1) {
+       input += "C";
        if (i === 4) {
-         firsdig = "CD";
+         input = "CD";
        } else if (i === 5) {
-         firsdig = "D";
+         input = "D";
        } else if (i === 9) {
-         firsdig = "CM";
+         input = "CM";
        } else {}
+       };
+       return input;
      };
-   }
+
     //separates thousands
-    var hundreds = function(number) {
-      firstdig +=
-    for (var i = 1; i <= numArray[0]; i +=1) {
-       firsdig += "M";
-      };
+    function thousands(number) {
+      input ="";
+    for (var i = 1; i <= number; i +=1) {
+       input += "M";
+     };
+     return input;
     };
 
-
+    function romanize(number) {
+      var numArray = [];
+      var romanNumeral = "";
+      if ((number >= 4000) || (number < 0)) {
+          return alert("Please use a number between 1 and 3999");
+        } else {
+          for (var i = 1; i <= number.length; i +=1) {
+             numArray.push(number.slice((i - 1), i));
+           }
+         }
+      if(numArray.length === 1){
+         romanNumeral = singles(numArray[0]);
+       }else if(numArray.length === 2){
+         romanNumeral = tens(numArray[0]) + singles(numArray[1]);
+       }else if(numArray.length === 3){
+         romanNumeral = hundreds(numArray[0]) + tens(numArray[1]) + singles(numArray[2]);
+       }else if(numArray.length === 4){
+         romanNumeral = thousands(numArray[0]) + hundreds(numArray[1]) + tens(numArray[2]) + singles(numArray[3]);
+       }else{
+       }
+       return romanNumeral;
+     };
 
   //FRONT-END
   $("#pax-romani").submit(function(event) {
     event.preventDefault();
     var num = ($("#usernumber").val());
-    var numArray = [];
-    //var splitNumber = function(num) {
-    if ((num >= 4000) || (num < 0)) {
-        return alert("Please use a number between 1 and 3999");
-      } else {
-        for (var i = 1; i <= num.length; i +=1) {
-           numArray.push(num.slice((i - 1), i));
-
-    // var ones = function(numArray) {
-        var firsdig = "";
-
-alert(firsdig);
-
-
-
-
-        // if (numArray.length===4) {
-        //   var first;
-        //   var second;
-        //   var third;
-        //   var fourth;
-        //
-        // } else if (numArray.length===3) {
-        //   var first;
-        //   var second;
-        //   var third;
-        //
-        // }else if (numArray.length===2){
-        //   var first;
-        //   var second;
-        // }else {
-        //   return var first =single(numArray[0]);
-         }
-        }
-
+    var romanNumeral = romanize(num);
+    $("#results").text(romanNumeral);
   });
 
 });

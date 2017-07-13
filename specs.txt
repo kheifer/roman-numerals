@@ -1,6 +1,6 @@
 When the user enters a number it returns roman characters
 
-When a single digit is entered it returns a number between I and X
+When a single digit is entered it returns a number between I and X-
 
 When a 5-10 is entered it ticks down appropriately
 returns a V
@@ -11,16 +11,16 @@ When a double digit number is entered it returns a number between X and C
 When three numbers are entered it returns a value between C and M
 
 
-It separates tens, hundreds,thousands and single digits
+It separates tens, hundreds,thousands and single digits-
 
 
-When a decimal is entered it returns an invalid response
+When a decimal is entered it returns an invalid response-
 min=0
 
-When a word is entered it doesn’t work
+When a word is entered it doesn’t work-
 type=number
 
-When a number over 3999 is entered the program doesn’t return a roman numeral
+When a number over 3999 is entered the program doesn’t return a roman numeral-
 max=3999
 
 
